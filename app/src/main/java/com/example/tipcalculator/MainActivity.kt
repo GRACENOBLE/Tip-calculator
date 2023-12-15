@@ -33,6 +33,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.text.input.KeyboardType
 import java.text.NumberFormat
 
@@ -79,6 +80,8 @@ fun TipTimeLayout(){
                 .padding(bottom = 50.dp)
         )
 
+        PercentageField()
+
         Spacer(
             modifier = Modifier.height(20.dp)
         )
@@ -94,6 +97,7 @@ fun TipTimeLayout(){
     }
 }
 
+
 @Composable
 fun EditNumberField(
     value: String,
@@ -102,11 +106,24 @@ fun EditNumberField(
 
 
 
-    TextField(
+    OutlinedTextField(
         value = value,
         onValueChange = onValueChanged,
         label = { Text(text = stringResource(R.string.bill_amount))},
         singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = modifier
+    )
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PercentageField(modifier: Modifier = Modifier){
+    OutlinedTextField(
+        value = "",
+        onValueChange = {},
+        label = {Text(text = "Rate")},
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = modifier
     )
