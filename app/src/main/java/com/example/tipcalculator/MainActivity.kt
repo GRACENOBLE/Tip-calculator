@@ -120,12 +120,16 @@ fun EditNumberField(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PercentageField(modifier: Modifier = Modifier){
+
+    var percentage: String by remember { mutableStateOf("") }
+
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = percentage,
+        onValueChange = {percentage = it},
         label = {Text(text = "Rate")},
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        modifier = modifier
+        modifier = modifier,
+        singleLine = true
     )
 }
 
